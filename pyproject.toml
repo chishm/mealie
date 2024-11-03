@@ -4,6 +4,10 @@ description = "A Recipe Manager"
 license = "AGPL"
 name = "mealie"
 version = "2.1.0"
+include = [
+    # Explicit include to override .gitignore when packaging the frontend
+    { path = "mealie/frontend/**/*", format = ["sdist", "wheel"] }
+]
 
 [tool.poetry.scripts]
 mealie = "mealie.main:main"
