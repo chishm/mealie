@@ -260,6 +260,16 @@ tasks:
     cmds:
       - yarn run dev
 
+  docker:build-from-package:
+    desc: Builds the Docker image from the existing Python package in dist/
+    deps:
+       - py:package
+    cmds:
+       - docker build --tag mealie:dev --file docker/Dockerfile --build-arg COMMIT={{.GIT_COMMIT}} --build-context packages=dist .
+    vars:
+      GIT_COMMIT:
+        sh: git rev-parse HEAD
+
   docker:prod:
     desc: builds and runs the production docker image locally
     dir: docker
