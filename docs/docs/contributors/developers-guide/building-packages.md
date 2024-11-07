@@ -29,11 +29,12 @@ pip3 install -r dist/requirements.txt --find-links dist
 To install with the latest but still compatible dependency versions, instead run `pip3 install dist/mealie-$VERSION-py3-none-any.whl` (where `$VERSION` is the version of mealie to install).
 
 ## Docker image
+One way to build the Docker image is to run the following command in the project root directory:
 ```sh
-task py:package
+docker build --tag mealie:dev --file docker/Dockerfile --build-arg COMMIT=$(git rev-parse HEAD) .
 ```
 
-Build the Docker image from the project root directory with:
+The Docker image can be built from the pre-built Python packages with the task command `task docker:build-from-package`. This is equivalent to:
 ```sh
-docker build --tag localhost/mealie:latest --file docker/Dockerfile .
+docker build --tag mealie:dev --file docker/Dockerfile --build-arg COMMIT=$(git rev-parse HEAD) --build-context packages=dist .
 ```

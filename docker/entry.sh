@@ -32,7 +32,7 @@ init() {
     cd /app
 
     # Activate our virtual environment here
-    . /opt/pysetup/.venv/bin/activate
+    . /opt/mealie/bin/activate
 }
 
 change_user
