@@ -75,6 +75,8 @@ jobs:
         with:
           virtualenvs-create: true
           virtualenvs-in-project: true
+          plugins: |
+            poetry-plugin-export
 
       - name: Retrieve built frontend
         uses: actions/download-artifact@v4

@@ -55,8 +55,11 @@ ENV POETRY_HOME="/opt/poetry" \
 ENV PATH="$POETRY_HOME/bin:$PATH"
 
 # install poetry - respects $POETRY_VERSION & $POETRY_HOME
-ENV POETRY_VERSION=1.8.3
+ENV POETRY_VERSION=2.0.1
 RUN curl -sSL https://install.python-poetry.org | python3 -
+
+# install poetry plugins needed to build the package
+RUN poetry self add "poetry-plugin-export>=1.9"
 
 WORKDIR /mealie
 
